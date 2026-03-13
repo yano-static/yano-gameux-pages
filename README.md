@@ -1,7 +1,7 @@
 # gameux-web
 Group 5 CIP 1101
 
-# Introduction
+## Introduction
 A pleasant day for another vanilla html without any frameworks except for the head-aching mind-boggling bootstrap. A framework that although makes life easier, makes my head and my CPU filled with bootstrap docs hot.
 
 This website is dedicated for the group project in CIP 1101.
