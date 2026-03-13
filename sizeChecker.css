@@ -1,0 +1,39 @@
+body::after {
+  content: 'sm';
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  font-size: 2em;
+  color: red;
+  font-weight: 600;
+}
+
+@media (width >= 40rem) { 
+    body::after {
+        content: 'md';
+    }
+}
+
+@media (width >= 48rem) { 
+    body::after {
+        content:'lg';
+    }
+}
+
+@media (width >= 64rem) { 
+    body::after {
+        content:'xl';
+    }
+}
+
+@media (width >= 80rem) { 
+    body::after {
+        content:'2xl';
+    }
+}
+
+@media (width >= 96rem) { 
+    body::after {
+        content:'3xl';
+    }
+}
