@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,27 +19,24 @@
         crossorigin="anonymous"></script>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="./src/styles/styles.css" type="text/css">
-    <link rel="stylesheet" href="./src/styles/sizeChecker.css" type="text/css">
-    <link rel="stylesheet" href="./src/styles/index.css" type="text/css">
+    <link rel="stylesheet" href="../styles/styles.css" type="text/css">
+    <link rel="stylesheet" href="../styles/sizeChecker.css" type="text/css">
+    <link rel="stylesheet" href="../styles/about.css" type="text/css">
 
     <!-- Custom Styles ------------------------------------------------------------------------------------------ -->
     <style>
-        body {
-            background-color: var(--t-color-base-200);
-        }
+        
     </style>
     <!-- Custom Styles ------------------------------------------------------------------------------------------ -->
 
-    <title>Home - GameUX</title>
+    <title>About - GameUX</title>
 </head>
-
-<body style="min-height: 200vh;">
+<body>
     <header>
         <nav class="navbar navbar-light navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="./index.html">
-                    <img src="./public/gameux.png" alt="Logo" class="navbar-logo">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../../public/gameux.png" alt="Logo" class="navbar-logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -67,28 +63,10 @@
         </nav>
     </header>
     <main>
-        <article style="max-width: 100%;">
-            <section>
-
-            </section>
-        </article>
-        <aside></aside>
+        
     </main>
     <footer>
 
     </footer>
 </body>
-
-<script>
-    // detect scroll and add class to header
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 0) {
-            header.classList.add('init');
-        } else {
-            header.classList.remove('init');
-        }
-    });
-</script>
-
 </html>

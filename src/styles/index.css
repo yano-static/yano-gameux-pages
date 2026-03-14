@@ -1,0 +1,17 @@
+header {
+    width: 100%;
+}
+
+@media (width >= 62rem) { /* above lg */
+
+    header:not(.init) {
+        .navbar {
+            background-color: var(--transparent) !important;
+        }
+        .nav-item {
+            &::after {
+                bottom: -0.25em;
+            }
+        }
+    }
+}

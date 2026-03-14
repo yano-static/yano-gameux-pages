@@ -176,9 +176,6 @@
 } */
 
 :root, [data-bs-theme=light] {
-  --bs-font-sans-serif: "Lexend", "Manrope", "Inter", sans-serif !important;
-  --bs-font-serif: "Lora", "DM Serif", "Spectral", serif !important;
-
   --t-color-base-100: oklch(98.71% 0.02 123.72);
   --t-color-base-200: oklch(91.8% 0.018 123.72);
   --t-color-base-300: oklch(84.89% 0.017 123.72);
@@ -207,6 +204,9 @@
   --t-border: 1px;
   --t-depth: 0;
   --t-noise: 0;
+
+  --bs-font-sans-serif: "Lexend", "Manrope", "Inter", sans-serif !important;
+  --bs-font-serif: "Lora", "DM Serif", "Spectral", serif !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -215,22 +215,6 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   background-color: var(--t-color-base-200) !important;
-}
-
-.navbar-logo {
-  height: 2em;
-  width: auto;
-  border-radius: 0.5rem;
-}
-
-.navbar {
-  background-color: var(--t-color-base-100) !important;
-}
-
-@media (width >= 62rem) { /* above lg */
-  .navbar {
-    background-color: var(--transparent) !important;
-  }
 }
 
 header {
@@ -259,4 +243,89 @@ article {
 section { /* Hero */
   height: 100vh;
   background-color: var(--t-color-info);
+}
+
+.navbar-logo {
+  height: 2em;
+  width: auto;
+  border-radius: 0.5rem;
+}
+
+.navbar {
+  background-color: var(--t-color-base-100) !important;
+  transition: background-color 0.3s ease;
+}
+
+@media (width >= 62rem) { /* above lg */
+  header {
+    position: fixed;
+  }
+
+  .navbar-collapse {
+    margin-left: auto;
+  }
+
+  .nav-item {
+    position: relative;
+
+    &:hover:not(:has(.nav-link.active)) {
+      &::after {
+        width: 1em;
+        left: calc(50% - 0.5em);
+        opacity: 1;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0.25em;
+      height: 4px;
+      bottom: -1em;
+      left: calc(50% - 0.125em);
+      border-radius: 0.5em;
+      opacity: 0;
+      background-color: var(--t-color-secondary);
+      transition: width 0.3s ease, left 0.3s ease, bottom 0.1s ease, opacity 0.1s ease;
+    }
+
+    &:has(.nav-link.active) {
+      &::after {
+        width: 100%;
+        background-color: var(--t-color-primary);
+        left: 0;
+        opacity: 1;
+      }
+
+      .nav-link {
+        color: var(--t-color-primary) !important;
+      }
+    }
+  }
+}
+
+@media (width < 62rem) {
+  .nav-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+
+    &:has(.nav-link.active) {
+      &::before {
+          background-color: var(--t-color-primary);
+      }
+
+      & .nav-link {
+          color: var(--t-color-primary) !important;
+      }
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 5px;
+      border-radius: 0.5em;
+      margin-right: 1em;
+    }
+  }
 }
