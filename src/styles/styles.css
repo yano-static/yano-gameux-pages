@@ -236,13 +236,20 @@ article {
 
   &.wide {
     width: 100%;
+    max-width: 100%;
     background-color: var(--t-color-base-300);
   }
 }
 
 section { /* Hero */
   height: 100vh;
-  background-color: var(--t-color-info);
+  width: 100%;
+  background-color: var(--t-color-base-300);
+  max-width: 1280px;
+
+  &.wide {
+    max-width: 100%;
+  }
 }
 
 .navbar-logo {
@@ -257,11 +264,6 @@ section { /* Hero */
 }
 
 @media (width >= 62rem) { /* above lg */
-  header {
-    position: fixed;
-    width: 100%;
-  }
-
   .navbar-collapse {
     margin-left: auto;
   }
@@ -306,14 +308,27 @@ section { /* Hero */
 }
 
 @media (width < 62rem) {
+  .navbar-brand::after {
+    content: 'Game UX Atlas';
+    font-weight: 600;
+    color: var(--t-color-primary)
+  }
+
   .nav-item {
     position: relative;
     display: flex;
     flex-direction: row;
+    
+    & .nav-link {
+      padding-left: 1.5em;
+    }
 
     &:has(.nav-link.active) {
       &::before {
           background-color: var(--t-color-primary);
+          opacity: 1;
+          height: 100%;
+          top: 0;
       }
 
       & .nav-link {
@@ -321,12 +336,27 @@ section { /* Hero */
       }
     }
 
+    &:has(.nav-link:hover:not(.active)) {
+      &::before {
+        height: 1em;
+        top: calc(50% - 0.5em);
+        opacity: 1;
+      }
+    }
+
     &::before {
       content: '';
       display: block;
+      position: absolute;
       width: 5px;
       border-radius: 0.5em;
       margin-right: 1em;
+      opacity: 0;
+      height: 0;
+      left: 0;
+      top: 50%;
+      background-color: var(--t-color-secondary);
+      transition: top 0.3s ease, opacity 0.1s ease-in-out, height 0.3s ease-in-out;
     }
   }
 }

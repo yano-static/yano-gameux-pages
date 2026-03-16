@@ -1,5 +1,11 @@
 @media (width >= 62rem) { /* above lg */
 
+    header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+    }
+
     header:not(.init) {
         .navbar {
             background-color: var(--transparent) !important;
