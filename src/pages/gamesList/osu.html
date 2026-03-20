@@ -75,6 +75,7 @@
     <main>
         <article class="wide">
             <section class="header-section">
+                <img class="game-poster-content game-poster-background-style"></img>
                 <h1 class="game-name game-name-header" title="Game Name">Game name</h1>
                 <div class="game-header">
                     <span class="game-header-cont">
@@ -122,7 +123,7 @@
                 </div>
                 <div class="video-game-container">
                     <a class="game-poster" id="game-poster">
-                        <img class="game-poster-img" id="game-poster-img">
+                        <img class="game-poster-img" id="game-poster-img" alt="Game Poster" target="images" title="Osu! Game Poster">
                     </a>
                     <video class="game-video" id="game-video">
                         <source type="video/mp4" id="game-video-source">
@@ -160,10 +161,6 @@
                         </table>
                     </div>
                 </div>
-            </section>
-        </article>
-        <article>
-            <section class="game-desc-section">
                 <ul class="game-list-data">
                     <li class="game-list-data-item">Genres:
                         <ul id="genres"></ul>
@@ -175,6 +172,14 @@
                         <ul id="editions"></ul>
                     </li>
                 </ul>
+                <p class="game-description" id="game-description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas aliquam consequatur iusto corrupti magni similique, non delectus illum esse ullam ad iure exercitationem doloribus ipsum at molestias et enim accusamus.
+                </p>
+            </section>
+        </article>
+        <article>
+            <section class="game-desc-section">
+
             </section>
         </article>
     </main>
@@ -188,17 +193,20 @@
     const GAMENAME = "osu!";
     const DATERELEASED = "09/16/2007"; // MM/DD/YYYY
     const PUBLISHER = 'Dean "peppy" Herbert';
-    const BADGE = "FULL RELEASE";
+    const BADGE = "Full Release";
     // Pre-Alpha
     // Alpha
     // Beta
     // Early Access
     // Full Release
-    const POSTERURL = "#";
+    const POSTERURL = "../../../public/posters/osu_poster.jpg";
+    const POSTERALTTEXT = "Osu! Game Poster";
+    const VIDEOURL = "../../../public/videos/osu_trailer.mp4";
+
     const GAMEUSERSTARS = "7.9";
     const GAMEUSERRATINGS = "158";
 
-    const HASCRITICS = false;           // Set to false if there are no critic ratings
+    const HASCRITICS = true;           // Set to false if there are no critic ratings
     const GAMECRITICSTARS = "0";
     const GAMECRITICRATINGS = "0";
 
@@ -206,7 +214,7 @@
     const PLATFORMS = ["PC", "Mac", "Linux", "iOS", "Android"];
     const EDITIONS = ["osu!stable", "osu!lazer"];
 
-
+    const DESCRIPTION = "Osu! is a free-to-play, community-driven rhythm game for PC where players click circles, follow sliders, and spin spinners to the beat of music. a free-to-play, community-driven rhythm game for PC where players click circles, follow sliders, and spin spinners to the beat of music. Inspired by Osu! Tatakae! Ouendan, it emphasizes speed, precision, and musical rhythm, featuring a highly competitive, PP-based ranking system, user-created beatmaps, and customizable skins.";
 
 
     // -- Implementation --
@@ -219,10 +227,14 @@
     for (let el of document.getElementsByClassName('game-user-ratings')) { el.textContent = GAMEUSERRATINGS + " user ratings"; }    // Set user ratings
     for (let el of document.getElementsByClassName('game-critic-rating')) { el.textContent = GAMECRITICSTARS; }                     // Set critic rating
     for (let el of document.getElementsByClassName('game-critic-ratings')) { el.textContent = GAMECRITICRATINGS + " critic ratings"; } // Set critic ratings
+    for (let el of document.getElementsByClassName('game-poster-content')) { el.src = POSTERURL; }                                               // Set poster content
     document.getElementById('game-poster-img').src = POSTERURL;                                                                     // Set poster image
+    document.getElementById('game-poster-img').title = GAMENAME + " Game Poster";                                                   // Set poster image title
     document.getElementById('game-poster').href = POSTERURL;                                                                        // Set poster link
+    document.getElementById('game-description').textContent = DESCRIPTION;                                                          // Set game description
+    document.getElementById('game-poster-img').alt = POSTERALTTEXT;                                                                 // Set poster image alt text
+    document.getElementById('game-video').src = VIDEOURL;                                                                           // Set video source
 
-    
     for (let genre of GENRES) { // Set genres
         let li = document.createElement('li');
         li.textContent = genre;
@@ -241,6 +253,7 @@
         document.getElementById('editions').appendChild(li);
     }
 
+    // Hide critic ratings
     if (!HASCRITICS) {
         for (let el of document.getElementsByClassName('game-critic-rating-cont')) { el.classList.add('hidden'); }
     }

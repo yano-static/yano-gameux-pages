@@ -4,11 +4,29 @@ article {
     background-color: var(--t-color-base-300);
 }
 
+p {
+    margin: 0;
+    text-indent: 1.5em;
+}
+
+article:has( .header-section) {
+    background-color: var(--t-color-dark);
+    color: var(--t-color-light);
+    overflow: hidden;
+
+    & section>*:not(.game-poster-background-style) {
+        position: relative;
+        z-index: 2;
+    }
+}
+
 .header-section {
     padding-top: 2em;
     box-sizing: border-box;
     width: 100%;
+    /* min-height: calc(100vh - 5em) !important; */
     min-height: 0 !important;
+    background-color: transparent;
 }
 
 .breadcrumb-item a {
@@ -70,6 +88,18 @@ article {
     margin-bottom: 2em;
 }
 
+.game-poster-background-style {
+    position: absolute;
+    left: 0;
+    top: -50%;
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    filter: blur(3em) brightness(0.5);
+    z-index: 1 !important;
+}
+
 .game-poster {
     display: block;
     width: 100%;
@@ -78,6 +108,7 @@ article {
     border-radius: 0.5em;
     aspect-ratio: 2/3;
     background-color: var(--t-color-base-100);
+    overflow: hidden;
 }
 
 .game-video {
@@ -99,6 +130,7 @@ article {
     display: flex;
     gap: 2em;
     flex-direction: column;
+    color: var(--t-color-dark);
 }
 
 .game-header {
@@ -145,31 +177,60 @@ article {
     flex-direction: column;
 }
 
+.game-poster-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.game-description {
+    margin-bottom: 3em;
+}
+
 .game-list-data-item {
     font-weight: 600;
     display: flex;
     flex-direction: row;
     gap: 1em;
 
-    & ul {
+    & ul:not(#genres) {
         list-style: none;
         padding: 0;
         gap: 0.5em;
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         
         & li {
-            
+            position: relative;
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                width: 100%;
+                background-color: var(--t-color-primary);
+                height: 1px;
+                bottom: 0.01em;
+            }
         }
     }
 
-    & ul#genres li {
-        display: inline-block;
-        padding: 0.125em 1em;
-        border-radius: 10em;
-        /* border: 1px solid var(--t-color-primary); */
-        background-color: var(--t-color-secondary);
-        color: var(--t-color-secondary-content);
+    & ul#genres {
+        list-style: none;
+        padding: 0;
+        gap: 0.5em;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        & li {
+            display: inline-block;
+            padding: 0.125em 1em;
+            border-radius: 10em;
+            /* border: 1px solid var(--t-color-primary); */
+            background-color: var(--t-color-secondary);
+            color: var(--t-color-secondary-content);
+        }
     }
 }
 
