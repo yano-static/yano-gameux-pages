@@ -123,7 +123,8 @@
                 </div>
                 <div class="video-game-container">
                     <a class="game-poster" id="game-poster">
-                        <img class="game-poster-img" id="game-poster-img" alt="Game Poster" target="images" title="Osu! Game Poster">
+                        <img class="game-poster-img" id="game-poster-img" alt="Game Poster" target="images"
+                            title="Osu! Game Poster">
                     </a>
                     <video class="game-video" id="game-video">
                         <source type="video/mp4" id="game-video-source">
@@ -173,14 +174,64 @@
                     </li>
                 </ul>
                 <p class="game-description" id="game-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas aliquam consequatur iusto corrupti magni similique, non delectus illum esse ullam ad iure exercitationem doloribus ipsum at molestias et enim accusamus.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas aliquam consequatur iusto corrupti
+                    magni similique, non delectus illum esse ullam ad iure exercitationem doloribus ipsum at molestias
+                    et enim accusamus.
                 </p>
             </section>
         </article>
         <article>
-            <section class="game-desc-section">
-
-            </section>
+            <div class="game-info-nav-wrap">
+                <button class="game-info-nav-arrow left" id="game-info-nav-left" type="button" aria-label="Scroll left"
+                    hidden>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M15.78 19.28a.75.75 0 0 1-1.06 0L8.22 12.78a.75.75 0 0 1 0-1.06l6.5-6.5a.75.75 0 1 1 1.06 1.06L9.81 12l5.97 5.72a.75.75 0 0 1 0 1.56Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <nav class="game-info-nav" id="game-info-nav">
+                    <label><input type="radio" name="game-section" value="short-description" checked="checked"> Short
+                        Description</label>
+                    <label><input type="radio" name="game-section" value="ui-components"> UI Components</label>
+                    <label><input type="radio" name="game-section" value="user-interaction"> User Interaction</label>
+                    <label><input type="radio" name="game-section" value="hci-principles"> HCI Principles</label>
+                    <label><input type="radio" name="game-section" value="strengths"> Strengths</label>
+                    <label><input type="radio" name="game-section" value="ui-ux-weaknesses"> UI/UX Weaknesses</label>
+                    <label><input type="radio" name="game-section" value="conclusion"> Conclusion</label>
+                </nav>
+                <button class="game-info-nav-arrow right" id="game-info-nav-right" type="button"
+                    aria-label="Scroll right" hidden>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M8.22 4.72a.75.75 0 0 1 1.06 0l6.5 6.5a.75.75 0 0 1 0 1.06l-6.5 6.5a.75.75 0 0 1-1.06-1.06L14.19 12 8.22 6.28a.75.75 0 0 1 0-1.56Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+            <div class="game-sections-stage">
+                <section class="game-sections" id="short-description">
+                    short description
+                </section>
+                <section class="game-sections" id="ui-components">
+                    UI components
+                </section>
+                <section class="game-sections" id="user-interaction">
+                    user interaction
+                </section>
+                <section class="game-sections" id="hci-principles">
+                    hci principles
+                </section>
+                <section class="game-sections" id="strengths">
+                    strengths
+                </section>
+                <section class="game-sections" id="ui-ux-weaknesses">
+                    ui/ux weaknesses
+                </section>
+                <section class="game-sections" id="conclusion">
+                    conclusion
+                </section>
+            </div>
         </article>
     </main>
     <footer>
@@ -214,8 +265,14 @@
     const PLATFORMS = ["PC", "Mac", "Linux", "iOS", "Android"];
     const EDITIONS = ["osu!stable", "osu!lazer"];
 
-    const DESCRIPTION = "Osu! is a free-to-play, community-driven rhythm game for PC where players click circles, follow sliders, and spin spinners to the beat of music. a free-to-play, community-driven rhythm game for PC where players click circles, follow sliders, and spin spinners to the beat of music. Inspired by Osu! Tatakae! Ouendan, it emphasizes speed, precision, and musical rhythm, featuring a highly competitive, PP-based ranking system, user-created beatmaps, and customizable skins.";
+    const DESCRIPTION = "Osu! is a free-to-play, community-driven rhythm game for PC where players click circles, follow sliders, and spin spinners to the beat of music. Inspired by Osu! Tatakae! Ouendan, it emphasizes speed, precision, and musical rhythm, featuring a highly competitive, PP-based ranking system, user-created beatmaps, and customizable skins.";
 
+    // Document Variables
+    const sectionRadios = Array.from(document.querySelectorAll('input[name="game-section"]'));
+    const gameSections = Array.from(document.querySelectorAll('.game-sections'));
+    const gameInfoNav = document.getElementById('game-info-nav');
+    const gameInfoNavLeft = document.getElementById('game-info-nav-left');
+    const gameInfoNavRight = document.getElementById('game-info-nav-right');
 
     // -- Implementation --
     document.getElementById('title').textContent = GAMENAME + " - GameUX";                                                          // Set page title
@@ -227,7 +284,7 @@
     for (let el of document.getElementsByClassName('game-user-ratings')) { el.textContent = GAMEUSERRATINGS + " user ratings"; }    // Set user ratings
     for (let el of document.getElementsByClassName('game-critic-rating')) { el.textContent = GAMECRITICSTARS; }                     // Set critic rating
     for (let el of document.getElementsByClassName('game-critic-ratings')) { el.textContent = GAMECRITICRATINGS + " critic ratings"; } // Set critic ratings
-    for (let el of document.getElementsByClassName('game-poster-content')) { el.src = POSTERURL; }                                               // Set poster content
+    for (let el of document.getElementsByClassName('game-poster-content')) { el.src = POSTERURL; }                                  // Set poster content
     document.getElementById('game-poster-img').src = POSTERURL;                                                                     // Set poster image
     document.getElementById('game-poster-img').title = GAMENAME + " Game Poster";                                                   // Set poster image title
     document.getElementById('game-poster').href = POSTERURL;                                                                        // Set poster link
@@ -267,6 +324,55 @@
     } else {
         for (let el of document.getElementsByClassName('days-ago')) { el.textContent = "(" + daysAgo + " days ago)"; }
     }
+
+    // Sections navigation
+    for (let radio of sectionRadios) {
+        radio.addEventListener('change', () => {
+            if (!radio.checked) { return; }
+            for (let section of gameSections) {
+                let isActive = section.id === radio.value;
+                section.classList.toggle('is-active', isActive);
+                section.setAttribute('aria-hidden', String(!isActive));
+            }
+        });
+    }
+
+    // Game info nav
+    function updateGameInfoNavArrows() {
+        if (!gameInfoNav || !gameInfoNavLeft || !gameInfoNavRight) {
+            return;
+        }
+
+        const maxScrollLeft = gameInfoNav.scrollWidth - gameInfoNav.clientWidth;
+        const canScroll = maxScrollLeft > 1;
+        const canScrollLeft = canScroll && gameInfoNav.scrollLeft > 1;
+        const canScrollRight = canScroll && gameInfoNav.scrollLeft < (maxScrollLeft - 1);
+
+        gameInfoNavLeft.hidden = !canScrollLeft;
+        gameInfoNavRight.hidden = !canScrollRight;
+    }
+
+    function scrollGameInfoNavBy(distance) {
+        if (!gameInfoNav) {
+            return;
+        }
+        gameInfoNav.scrollBy({ left: distance, behavior: 'smooth' });
+    }
+
+    if (gameInfoNav && gameInfoNavLeft && gameInfoNavRight) {
+        gameInfoNav.addEventListener('scroll', updateGameInfoNavArrows);
+        gameInfoNavLeft.addEventListener('click', () => {
+            scrollGameInfoNavBy(-Math.max(200, Math.floor(gameInfoNav.clientWidth * 0.5)));
+        });
+        gameInfoNavRight.addEventListener('click', () => {
+            scrollGameInfoNavBy(Math.max(200, Math.floor(gameInfoNav.clientWidth * 0.5)));
+        });
+        window.addEventListener('resize', updateGameInfoNavArrows);
+        updateGameInfoNavArrows();
+    }
+
+    const defaultSection = document.querySelector('input[name="game-section"]:checked');
+    showGameSection(defaultSection ? defaultSection.value : 'short-description');
 </script>
 
 </html>
