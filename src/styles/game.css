@@ -1,7 +1,6 @@
 article {
     width: 100%;
     max-width: var(--t-maxwidth);
-    background-color: var(--t-color-base-300);
 }
 
 p {

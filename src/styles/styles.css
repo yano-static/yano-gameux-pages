@@ -177,7 +177,7 @@
 
 :root, [data-bs-theme=light] {
   --t-color-base-100: oklch(98.71% 0.02 123.72);
-  --t-color-base-200: oklch(91.8% 0.018 123.72);
+  --t-color-base-200: oklch(94.461% 0.011 123.764);
   --t-color-base-300: oklch(84.89% 0.017 123.72);
   --t-color-dark: oklch(19.742% 0.004 123.72);
   --t-color-light: oklch(98.71% 0.02 123.72);
@@ -238,7 +238,6 @@ main {
 article {
   width: 100%;
   max-width: var(--t-maxwidth);
-  background-color: var(--t-color-base-300);
   margin: auto;
 
   &.wide {
@@ -257,7 +256,7 @@ article {
 section { /* Hero */
   min-height: 100vh;
   width: 100%;
-  background-color: var(--t-color-base-300);
+  /* background-color: var(--t-color-base-300); */
   max-width: 1280px;
   padding-left: 1em;
   padding-right: 1em;
