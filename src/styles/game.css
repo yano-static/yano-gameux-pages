@@ -70,6 +70,38 @@ nav.game-info-nav {
     }
 }
 
+footer {
+    width: 100%;
+    min-height: 5em;
+    background-color: var(--t-color-base-300);
+
+    & h6 {
+        font-weight: 900;
+        font-size: 1.25em;
+        margin: 0;
+        padding: 1em;
+        text-align: center;
+        color: var(--t-color-primary)
+    }
+
+    & .footer-info {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+        padding: 1em;
+        border-top: 1px solid var(--t-color-base-200);
+
+        & span::before {
+            content: '•';
+            margin-right: 1em;
+        }
+        & span:first-child::before {
+            content: '';
+            margin-right: 0;
+        }
+    }
+}
+
 .game-sections {
     &#short-description {
 
@@ -89,6 +121,7 @@ nav.game-info-nav {
             margin-left: 2em;
             margin-bottom: 2em;
             border-radius: 0.5em;
+            border: 1px solid var(--t-color-base-300);
             
             &>h6 {
                 font-weight: 900;
@@ -113,6 +146,13 @@ nav.game-info-nav {
             }
         }
     }
+    
+    &#ui-components {
+        &>h2 {
+            font-weight: 900;
+            font-size: 2.5em;
+        }
+    }
 }
 
 .metrics-list {
@@ -128,6 +168,7 @@ nav.game-info-nav {
         background-color: var(--t-color-base-100);
         padding: 1em;
         border-radius: 0.5em;
+        border: 1px solid var(--t-color-base-300);
 
         &>.value {
             font-size: 1.5em;
